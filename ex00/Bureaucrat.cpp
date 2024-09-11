@@ -1,32 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dabi-rac <dabi-rac@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 16:45:21 by dabi-rac          #+#    #+#             */
-/*   Updated: 2024/09/10 19:48:31 by dabi-rac         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Bureaucrat.hpp"
 
-std::string Bureaucrat::getName()
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
 {
-    return this->_Value;
-}
-
-int Bureaucrat::getGrade()
-{
-    return this->_Value;
-}
-
-Bureaucrat::Bureaucrat(std::string name const, int grade)
-{
-    if(grade < 1)
-        throw 
+    if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::~Bureaucrat()
-{}
+{
+}
+
+int Bureaucrat::getGrade() const {
+    return this->_grade;
+}
+
+std::string Bureaucrat::getName() const {
+    return this->_name;
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade is too low!";
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade is too high!";
+}
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {
+    out << src.getName() << ", bureaucrat grade " << src.getGrade();
+    return out;
+}

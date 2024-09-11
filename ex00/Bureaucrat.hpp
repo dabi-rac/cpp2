@@ -1,31 +1,36 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dabi-rac <dabi-rac@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 15:27:17 by dabi-rac          #+#    #+#             */
-/*   Updated: 2024/09/10 18:30:17 by dabi-rac         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <string>
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include <string>
+#include <iostream>
+#include <exception>
+
 class Bureaucrat
 {
-    public:
-    Bureaucrat(std::string name const, int grade);
+public:
+    Bureaucrat(const std::string name, int grade);
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat& otherBureaucrat);
     Bureaucrat& operator=(const Bureaucrat& otherBureaucrat);
-    
-    getGrade();
-    getName();
-    GradeTooHighException();
-    GradeTooLowException();
+
+    int getGrade() const;
+    std::string getName() const;
+
+    class GradeTooLowException : public std::exception {
+    public:
+        virtual const char *what() const throw();
+    };
+
+    class GradeTooHighException : public std::exception {
+    public:
+        virtual const char *what() const throw();
+    };
+
+private:
+    std::string _name;
+    int _grade;
 };
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &src);
 
 #endif
