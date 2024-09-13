@@ -6,7 +6,7 @@
 /*   By: dabi-rac <dabi-rac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:45:18 by dabi-rac          #+#    #+#             */
-/*   Updated: 2024/09/11 18:22:09 by dabi-rac         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:36:36 by dabi-rac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int main(void)
 {
     try
     {
-        Bureaucrat franco("ganni", 100);
+        Bureaucrat franco("ganni", 200);
         std::cout << franco << std::endl;
-
     }
     catch(std::exception &e)
     {
