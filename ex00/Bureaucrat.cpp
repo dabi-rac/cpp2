@@ -33,11 +33,11 @@ std::string Bureaucrat::getName() const {
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Grade is too low!";
+    return "grade's is too low!";
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Grade is too high!";
+    return "grade's is too high!";
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {

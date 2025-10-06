@@ -18,12 +18,12 @@ int main(void)
 {
     try
     {
-        Bureaucrat franco("ganni", -12);
+        Bureaucrat franco("franco", 12);
         std::cout << franco << std::endl;
-        Bureaucrat franco("ganni", 12);
-        std::cout << franco << std::endl;
-        Bureaucrat franco("ganni", -122);
-        std::cout << franco << std::endl;
+        Bureaucrat lmao("lmao", 12);
+        std::cout << lmao << std::endl;
+        Bureaucrat bufu("bufu", -122);
+        std::cout << bufu << std::endl;
     }
     catch(std::exception &e)
     {
