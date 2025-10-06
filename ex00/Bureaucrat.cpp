@@ -32,6 +32,22 @@ std::string Bureaucrat::getName() const {
     return this->_name;
 }
 
+std::string Bureaucrat::increaseGrade()
+{
+     this->_grade--;
+    if(this->_grade < 1 || this->_grade > 150)
+        throw Bureaucrat::GradeTooHighException();
+    return "grade increased!";
+}
+
+std::string Bureaucrat::decreaseGrade()
+{
+    this->_grade++;
+    if(this->_grade <1 || this->_grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+    return "grade decreased!";
+}
+
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return "grade's is too low!";
 }

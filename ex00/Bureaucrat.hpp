@@ -28,6 +28,9 @@ public:
     int getGrade() const;
     std::string getName() const;
 
+    std::string increaseGrade();
+    std::string decreaseGrade();
+
     class GradeTooLowException : public std::exception {
     public:
         virtual const char *what() const throw();
