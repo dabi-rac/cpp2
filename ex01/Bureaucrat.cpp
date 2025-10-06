@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
 {
@@ -47,6 +48,15 @@ std::string Bureaucrat::decreaseGrade()
         throw Bureaucrat::GradeTooLowException();
     return "grade decreased!";
 }
+
+void Bureaucrat::signForm(Form form){
+    std::ostream &out;
+    int success = form.beSigned(this);
+    if(success == 1)
+        out << this->getName << " signed " << form->getName();
+        
+}
+
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return "grade's is too low!";
