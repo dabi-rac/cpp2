@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabi-rac <dabi-rac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dabi-rac <dabi-rac@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:39:10 by dabi-rac          #+#    #+#             */
-/*   Updated: 2024/09/13 12:39:10 by dabi-rac         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:48:31 by dabi-rac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150)
+{
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade)
+{
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+    if (this != &other)
+    {
+        this->_grade = other._grade;
+    }
+    return *this;
+}
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
 {
@@ -57,6 +74,8 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {
-    out << src.getName() << ", bureaucrat grade " << src.getGrade();
+    out << src.getName() << ", bureaucrat grade " << src.getGrade() << "." ;
     return out;
 }
+
+

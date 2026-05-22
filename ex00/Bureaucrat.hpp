@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabi-rac <dabi-rac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dabi-rac <dabi-rac@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:38:58 by dabi-rac          #+#    #+#             */
-/*   Updated: 2024/09/13 12:39:01 by dabi-rac         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:48:33 by dabi-rac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class Bureaucrat
 {
 public:
+    Bureaucrat();
     Bureaucrat(const std::string name, int grade);
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat& otherBureaucrat);
@@ -42,7 +43,7 @@ public:
     };
 
 private:
-    std::string _name;
+    const std::string _name;
     int _grade;
 };
 
